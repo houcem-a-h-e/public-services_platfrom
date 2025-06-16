@@ -1,0 +1,8 @@
+<h2>Public Services</h2>
+<mat-list>
+  <mat-list-item *ngFor="let service of services">
+    <h3 matLine>{{ service.name }}</h3>
+    <p matLine>{{ service.description }}</p>
+    <p matLine><small>Category: {{ service.category }} | Status: {{ service.status }}</small></p>
+  </mat-list-item>
+</mat-list>
