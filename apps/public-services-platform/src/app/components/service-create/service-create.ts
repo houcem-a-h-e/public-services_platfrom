@@ -21,6 +21,7 @@ import { PublicServiceService } from '../../services/public-service.service';
     MatButtonModule,
   ],
   templateUrl: './service-create.html',
+  styleUrls: ['./service-create.scss'],
 })
 export class ServiceCreateComponent {
   service: Partial<PublicService> = {

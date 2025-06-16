@@ -1,27 +1,38 @@
-<h2>Create New Public Service</h2>
-<form>
+<h2 class="mat-headline">Create New Public Service</h2>
+
+<form class="service-form" (ngSubmit)="save()" #serviceForm="ngForm" novalidate>
+
   <mat-form-field appearance="fill" class="full-width">
     <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="service.name" name="name" required />
+    <input matInput [(ngModel)]="service.name" name="name" required #name="ngModel" />
+    <mat-error *ngIf="name.invalid && name.touched">Name is required</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="full-width">
     <mat-label>Description</mat-label>
-    <textarea matInput [(ngModel)]="service.description" name="description" required></textarea>
+    <textarea matInput rows="4" [(ngModel)]="service.description" name="description" required #description="ngModel"></textarea>
+    <mat-error *ngIf="description.invalid && description.touched">Description is required</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="full-width">
     <mat-label>Category</mat-label>
-    <input matInput [(ngModel)]="service.category" name="category" required />
+    <input matInput [(ngModel)]="service.category" name="category" required #category="ngModel" />
+    <mat-error *ngIf="category.invalid && category.touched">Category is required</mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="full-width">
     <mat-label>Status</mat-label>
-    <mat-select [(ngModel)]="service.status" name="status">
+    <mat-select [(ngModel)]="service.status" name="status" required #status="ngModel">
       <mat-option value="active">Active</mat-option>
       <mat-option value="inactive">Inactive</mat-option>
     </mat-select>
+    <mat-error *ngIf="status.invalid && status.touched">Status is required</mat-error>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" (click)="save()">Save</button>
+  <div class="button-row">
+    <button mat-raised-button color="primary" type="submit" [disabled]="serviceForm.invalid">
+      Save
+    </button>
+  </div>
+
 </form>

@@ -1,1 +1,35 @@
-<p>home works here</p>
+<div class="home-container">
+  <mat-card class="welcome-card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>home</mat-icon>
+      <mat-card-title class="mat-headline-medium">Welcome to the Public Services Platform!</mat-card-title>
+      <mat-card-subtitle class="mat-body-1">Your gateway to efficient and secure public services.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="mat-body-1">
+        This platform is designed to streamline the process of accessing, submitting, and managing various public services for citizens, and to provide robust tools for government agents to process requests efficiently.
+      </p>
+      <p class="mat-body-2">
+        Explore our comprehensive catalog of services, track your requests, and manage your digital identity with ease.
+      </p>
+
+      <mat-divider class="my-3"></mat-divider>
+
+      <h3 class="mat-title">Key Features:</h3>
+      <ul class="mat-body-1">
+        <li><mat-icon class="list-icon">lock</mat-icon> Secure Authentication & Authorization (Keycloak)</li>
+        <li><mat-icon class="list-icon">perm_identity</mat-icon> Digital Identity Management (MOSIP)</li>
+        <li><mat-icon class="list-icon">list_alt</mat-icon> Comprehensive Service Catalog</li>
+        <li><mat-icon class="list-icon">manage_accounts</mat-icon> Role-Based Access for Citizens, Agents, and Admins</li>
+      </ul>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" routerLink="/services">
+        <mat-icon>explore</mat-icon> Explore Services
+      </button>
+      <button mat-button routerLink="/contact">
+        <mat-icon>contact_support</mat-icon> Contact Us
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,8 +1,14 @@
-<nav>
-  <a routerLink="/">Home</a>
-  <a routerLink="/services">Services</a>
-  <a routerLink="/services/create">Create Service</a>
-</nav>
+<mat-toolbar color="primary">
+  <button mat-button routerLink="/">Home</button>
+  <button mat-button routerLink="/services">Services</button>
+  <button mat-button routerLink="/services/create">Create Service</button>
+  <button mat-button routerLink="/agents">Agent</button>
+
+  <span class="spacer"></span>
+  
+  <!-- Optional: Add user menu, logout button, or icons here -->
+</mat-toolbar>
+
 <router-outlet></router-outlet>
 
 <style>
