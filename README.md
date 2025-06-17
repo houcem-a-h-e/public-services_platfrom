@@ -1,8 +1,12 @@
 Plateforme Sécurisée de Gestion de Services Publics
-Description du Projet
-Ce projet a été développé comme une évaluation technique, démontrant la capacité à concevoir une plateforme sécurisée de gestion de services publics. Il inclut :
 
-Frontend : Angular avec Material Design.
+Description du Projet
+
+Ce projet a été développé comme une évaluation technique, démontrant la capacité à concevoir une plateforme sécurisée de gestion de services publics. 
+
+Il inclut :
+
+Frontend : Angular avec Angular Material.
 
 Backend : NestJS.
 
@@ -11,6 +15,7 @@ Workspace : Structure modulaire avec Nx.
 Authentification : Keycloak (OIDC/OAuth2) avec gestion des rôles.
 
 Fonctionnalités Réalisées
+
 🔒 Frontend Angular avec Keycloak
 Authentification des utilisateurs via Keycloak (login/logout).
 
@@ -41,6 +46,7 @@ Libs partagées : modèles, services, UI.
 Scripts centralisés pour le build et le déploiement.
 
 🐳 Docker et Keycloak
+
 Image Docker personnalisée pour Keycloak, configurée avec les rôles et utilisateurs du projet.
 
 Fichier docker-compose.yml pour démarrer facilement Keycloak.
@@ -48,9 +54,13 @@ Fichier docker-compose.yml pour démarrer facilement Keycloak.
 URL Keycloak : http://localhost:8888.
 
 Comptes Utilisateurs de Test
+
 Email	Mot de Passe	Rôle
+
 houcem.eddinhe.aouissaoui@outlook.com	123456a	Admin
+
 a.houcem@outlook.com	123456a	Agent
+
 houseem.aouiss.ci@gmail.com	123456a	Citoyen
 
 Prérequis
@@ -63,46 +73,41 @@ Angular CLI pour lancer l'application frontend.
 Étapes d'Installation
 Cloner le projet :
 
-bash
-Copy
-Edit
 git clone <URL_DU_REPO>
+
 cd <Dossier_Du_Projet>
+
 Installer les dépendances :
 
-bash
-Copy
-Edit
+
 npm install
+
 Démarrer Keycloak :
 
-bash
-Copy
-Edit
 docker-compose up -d
+
 URL : http://localhost:8888.
 
 Dans Keycloak, choisissez le realm public-services.
 
 Lancer le backend :
 
-bash
-Copy
-Edit
 nx serve backend
+
 Lancer le frontend :
 
-bash
-Copy
-Edit
 nx serve frontend
+
 Accéder à l'application :
 
 Frontend : http://localhost:4200
 
+
 Backend : http://localhost:3000/api
 
+
 Limitations
+
 Backend : Décodage des JWT non fonctionnel.
 
 MOSIP : Non intégré dans ce projet.
@@ -110,6 +115,7 @@ MOSIP : Non intégré dans ce projet.
 Base de données : Données fictives stockées en mémoire.
 
 Améliorations Futures
+
 Résolution du problème de décodage des JWT dans NestJS.
 
 Intégration avec une base de données.
