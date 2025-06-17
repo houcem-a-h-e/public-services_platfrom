@@ -1,50 +1,59 @@
 Plateforme Sécurisée de Gestion de Services Publics
-
 Description du Projet
-Ce projet a été développé comme évaluation technique pour démontrer la capacité à construire une plateforme sécurisée de gestion de services publics. Il comprend un frontend basé sur Angular et un backend avec NestJS, orchestrés via un workspace Nx.
+Ce projet a été développé comme une évaluation technique, démontrant la capacité à concevoir une plateforme sécurisée de gestion de services publics. Il inclut :
+
+Frontend : Angular avec Material Design.
+
+Backend : NestJS.
+
+Workspace : Structure modulaire avec Nx.
+
+Authentification : Keycloak (OIDC/OAuth2) avec gestion des rôles.
 
 Fonctionnalités Réalisées
-
-Frontend Angular avec intégration Keycloak :
-
+🔒 Frontend Angular avec Keycloak
 Authentification des utilisateurs via Keycloak (login/logout).
 
 Gestion des rôles utilisateur : citoyen, agent, et admin.
 
-Protection des routes frontend en fonction des rôles (crétaion des services géré seulement par admin et agent).
+Protection des routes selon les rôles :
 
-Les utilisateurs peuvent rechercher, consulter, modifier et supprimer des services selon leurs droits.
+Seuls les admins et agents peuvent créer des services.
 
-Backend NestJS :
+Les citoyens peuvent rechercher, consulter, modifier et supprimer des services.
 
-Création d’une API REST pour la gestion des services publics.
+Recherche dynamique des services.
 
-Intégration partielle avec Keycloak. Les JWT sont émis correctement, mais leur validation et décodage dans le backend rencontrent des problèmes techniques.
+🌐 Backend NestJS
+Création d’une API REST pour gérer les services publics.
 
-Architecture Nx Workspace :
+Intégration partielle de Keycloak :
 
-Une structure modulaire favorisant la réutilisation du code (libs partagées).
+JWT émis correctement.
 
-Intégration des scripts centralisés pour le build et le déploiement.
+Décodage des JWT non fonctionnel (à résoudre).
 
-Docker et Keycloak :
+🛠 Architecture Nx Workspace
+Structure modulaire pour une meilleure réutilisation du code.
 
-Une image Docker personnalisée pour Keycloak, configurée avec les utilisateurs et les rôles de l'application.
+Libs partagées : modèles, services, UI.
 
-Un fichier docker-compose.yml situé à la racine du projet pour un démarrage facile de Keycloak.
+Scripts centralisés pour le build et le déploiement.
 
-URL pour accéder à Keycloak : http://localhost:8888.
+🐳 Docker et Keycloak
+Image Docker personnalisée pour Keycloak, configurée avec les rôles et utilisateurs du projet.
+
+Fichier docker-compose.yml pour démarrer facilement Keycloak.
+
+URL Keycloak : http://localhost:8888.
 
 Comptes Utilisateurs de Test
-
-Email	                                Mot de Passe	Rôle
-
-houcem.eddinhe.aouissaoui@outlook.com	123456a	        admin
-a.houcem@outlook.com	                123456a	        agent
-houseem.aouiss.ci@gmail.com	            123456a	        citoyen
+Email	Mot de Passe	Rôle
+houcem.eddinhe.aouissaoui@outlook.com	123456a	Admin
+a.houcem@outlook.com	123456a	Agent
+houseem.aouiss.ci@gmail.com	123456a	Citoyen
 
 Prérequis
-
 Node.js : Version 22 ou supérieure.
 
 Docker et Docker Compose installés.
@@ -52,36 +61,41 @@ Docker et Docker Compose installés.
 Angular CLI pour lancer l'application frontend.
 
 Étapes d'Installation
-
 Cloner le projet :
 
-
+bash
+Copy
+Edit
 git clone <URL_DU_REPO>
-
 cd <Dossier_Du_Projet>
-
 Installer les dépendances :
 
+bash
+Copy
+Edit
 npm install
-
 Démarrer Keycloak :
 
+bash
+Copy
+Edit
 docker-compose up -d
+URL : http://localhost:8888.
 
-Accéder à Keycloak : http://localhost:8888.
-
-Les identifiants Keycloak (admin par défaut) sont définis dans le docker-compose.yml.
-
-Choisir le realm "public-services" au niveau de l'interface de keycloak pour vérifier la configuration (par défaut "master")
+Dans Keycloak, choisissez le realm public-services.
 
 Lancer le backend :
 
+bash
+Copy
+Edit
 nx serve backend
-
 Lancer le frontend :
 
+bash
+Copy
+Edit
 nx serve frontend
-
 Accéder à l'application :
 
 Frontend : http://localhost:4200
@@ -89,21 +103,19 @@ Frontend : http://localhost:4200
 Backend : http://localhost:3000/api
 
 Limitations
-L'intégration Keycloak côté backend n'est pas totalement fonctionnelle. Le décodage des JWT nécessite des ajustements techniques.
+Backend : Décodage des JWT non fonctionnel.
 
-MOSIP n’a pas été intégré dans ce projet.
+MOSIP : Non intégré dans ce projet.
 
-Pas de base de données : Les données sont fictives et stockées en mémoire.
+Base de données : Données fictives stockées en mémoire.
 
-
-Fonctionnalités à Améliorer
-
+Améliorations Futures
 Résolution du problème de décodage des JWT dans NestJS.
 
-Intégration avec une base de données pour persister les données.
+Intégration avec une base de données.
 
-Connexion au système MOSIP pour la gestion de l'identité numérique.
+Intégration de MOSIP pour la gestion de l'identité numérique.
 
-
-Auteurs
+Auteur
 Houcem Eddine Aouissaoui
+📧 houcem.eddinhe.aouissaoui@outlook.com
