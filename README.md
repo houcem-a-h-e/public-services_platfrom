@@ -46,6 +46,7 @@ Libs partagées : modèles, services, UI.
 Scripts centralisés pour le build et le déploiement.
 
 🐳 Docker et Keycloak
+
 Image Docker personnalisée pour Keycloak, configurée avec les rôles et utilisateurs du projet.
 
 Fichier docker-compose.yml pour démarrer facilement Keycloak.
@@ -73,33 +74,40 @@ Angular CLI pour lancer l'application frontend.
 Cloner le projet :
 
 git clone <URL_DU_REPO>
+
 cd <Dossier_Du_Projet>
+
 Installer les dépendances :
 
 
 npm install
+
 Démarrer Keycloak :
 
 docker-compose up -d
+
 URL : http://localhost:8888.
 
 Dans Keycloak, choisissez le realm public-services.
 
 Lancer le backend :
 
-
 nx serve backend
+
 Lancer le frontend :
 
-
 nx serve frontend
+
 Accéder à l'application :
 
 Frontend : http://localhost:4200
 
+
 Backend : http://localhost:3000/api
 
+
 Limitations
+
 Backend : Décodage des JWT non fonctionnel.
 
 MOSIP : Non intégré dans ce projet.
@@ -107,6 +115,7 @@ MOSIP : Non intégré dans ce projet.
 Base de données : Données fictives stockées en mémoire.
 
 Améliorations Futures
+
 Résolution du problème de décodage des JWT dans NestJS.
 
 Intégration avec une base de données.
