@@ -49,9 +49,13 @@ Fichier docker-compose.yml pour démarrer facilement Keycloak.
 URL Keycloak : http://localhost:8888.
 
 Comptes Utilisateurs de Test
+
 Email	Mot de Passe	Rôle
+
 houcem.eddinhe.aouissaoui@outlook.com	123456a	Admin
+
 a.houcem@outlook.com	123456a	Agent
+
 houseem.aouiss.ci@gmail.com	123456a	Citoyen
 
 Prérequis
@@ -64,22 +68,14 @@ Angular CLI pour lancer l'application frontend.
 Étapes d'Installation
 Cloner le projet :
 
-bash
-Copy
-Edit
 git clone <URL_DU_REPO>
 cd <Dossier_Du_Projet>
 Installer les dépendances :
 
-bash
-Copy
-Edit
+
 npm install
 Démarrer Keycloak :
 
-bash
-Copy
-Edit
 docker-compose up -d
 URL : http://localhost:8888.
 
@@ -87,15 +83,11 @@ Dans Keycloak, choisissez le realm public-services.
 
 Lancer le backend :
 
-bash
-Copy
-Edit
+
 nx serve backend
 Lancer le frontend :
 
-bash
-Copy
-Edit
+
 nx serve frontend
 Accéder à l'application :
 
