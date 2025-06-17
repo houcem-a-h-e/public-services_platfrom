@@ -11,6 +11,7 @@ Workspace : Structure modulaire avec Nx.
 Authentification : Keycloak (OIDC/OAuth2) avec gestion des rôles.
 
 Fonctionnalités Réalisées
+
 🔒 Frontend Angular avec Keycloak
 Authentification des utilisateurs via Keycloak (login/logout).
 
