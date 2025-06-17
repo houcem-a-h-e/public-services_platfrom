@@ -11,16 +11,9 @@ export const createKeycloakAuthGuard = (requiredRoles: RoleType): CanActivateFn 
     authData: AuthGuardData
   ): Promise<boolean | UrlTree> => {
     const { authenticated, grantedRoles } = authData;
-    console.log('Full auth data:', authData);
-    console.log('Is authenticated:', authenticated);
-    console.log('All granted roles:', grantedRoles);
-    console.log('Realm roles:', grantedRoles.realmRoles);
-    console.log('Resource roles:', grantedRoles.resourceRoles);
-    console.log('Required roles jwt utilsZ:', requiredRoles);
     
     // Check if user is authenticated first
     if (!authenticated) {
-      console.log('User is not authenticated');
       const router = inject(Router);
       return router.parseUrl('/forbidden');
     }
@@ -35,10 +28,8 @@ export const createKeycloakAuthGuard = (requiredRoles: RoleType): CanActivateFn 
       return hasRealmRole || hasResourceRole;
     });
     
-    console.log('Has required role:', hasRequiredRole);
     
     if (!hasRequiredRole) {
-      console.log('User does not have required role(s)');
       const router = inject(Router);
       return router.parseUrl('/forbidden');
     }

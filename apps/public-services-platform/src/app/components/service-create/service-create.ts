@@ -32,18 +32,10 @@ export class ServiceCreateComponent {
     category: '',
     status: 'active'
   };
-ngOnInit() {
-  this.test()
-}
+
   constructor(private serviceService: PublicServiceService,
               private router: Router,
               private apiService : ServiceService) {}
-
-    test() {
-      console.log('Testing API Service');
-    this.apiService.test()
-
-  }
 
 
   addService(){
@@ -53,7 +45,6 @@ ngOnInit() {
             return of(); 
           })
         ).subscribe(data => {
-          console.log('Service created successfully', data);
             this.router.navigate(['/services']); // Navigate to the service list after creation
         });  
   }

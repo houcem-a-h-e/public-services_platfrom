@@ -8,7 +8,6 @@ export class KeycloakAuthGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
     // Retrieve required roles from the route metadata
     const requiredRoles = this.reflector.get<string[]>('roles', context.getHandler());
-    console.log('Required Roles backend:', requiredRoles);
 
     if (!requiredRoles) {
       // If no roles are required, allow access
@@ -16,11 +15,9 @@ export class KeycloakAuthGuard implements CanActivate {
     }
 
     const request = context.switchToHttp().getRequest();
-    console.log('Headers:', request.headers);
 
     // Ensure user is attached to the request
     const user = request.user;
-    console.log('User:', user);
 
     if (!user) {
       console.error('Request does not contain a valid user object.');
@@ -34,8 +31,6 @@ export class KeycloakAuthGuard implements CanActivate {
 
     // Check if the user has at least one of the required roles
     const hasRequiredRole = requiredRoles.some(role => user.roles.includes(role));
-    console.log('User Roles:', user.roles);
-    console.log('Has Required Role:', hasRequiredRole);
 
     if (!hasRequiredRole) {
       throw new ForbiddenException('Access denied: insufficient permissions.');

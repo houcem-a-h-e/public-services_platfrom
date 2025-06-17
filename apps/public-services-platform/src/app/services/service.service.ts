@@ -26,7 +26,6 @@ export class ServiceService {
   test():void{
     this.http.get<Service[]>(`${this.baseUrl}/test`).subscribe(
       (services) => {
-        console.log('Test services fetched:', services);
         this.servicesSubject.next(services)},
       (error) => console.error('Error fetching services:', error)
     );

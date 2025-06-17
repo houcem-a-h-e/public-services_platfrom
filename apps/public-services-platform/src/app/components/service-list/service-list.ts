@@ -78,7 +78,6 @@ export class ServiceListComponent implements OnInit {
       .update(this.editingService.id, this.editingService)
       .pipe(
         tap((data) => {
-          console.log('Service updated successfully', data);
           this.editingService = null; // Close the edit form
         }),
         catchError((error) => {
@@ -105,7 +104,6 @@ export class ServiceListComponent implements OnInit {
       .delete(service.id)
       .pipe(
         tap(() => {
-          console.log('Service deleted successfully');
           // Update the local services list by filtering out the deleted service
           this.services = this.services.filter((s) => s.id !== service.id);
           this.filterServices(); // Update filtered services

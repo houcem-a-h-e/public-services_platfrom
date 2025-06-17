@@ -14,12 +14,7 @@ export class ServicesController {
 
   private nextId = 4;
 
-@Get('test')
-  @UseGuards(AuthGuard('jwt'))
-  testAuth(@Req() req) {
-    console.log('Authenticated Request:', req.user); // Ensure this logs
-    return { message: 'Success', user: req.user };
-  }
+
   @Get()
   @SetMetadata('roles', ['citoyen'])
   getServices(@Query('category') category?: string) {
