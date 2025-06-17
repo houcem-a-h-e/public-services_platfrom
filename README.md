@@ -2,7 +2,9 @@ Plateforme Sécurisée de Gestion de Services Publics
 
 Description du Projet
 
-Ce projet a été développé comme une évaluation technique, démontrant la capacité à concevoir une plateforme sécurisée de gestion de services publics. Il inclut :
+Ce projet a été développé comme une évaluation technique, démontrant la capacité à concevoir une plateforme sécurisée de gestion de services publics. 
+
+Il inclut :
 
 Frontend : Angular avec Material Design.
 
