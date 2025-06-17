@@ -6,7 +6,7 @@ Ce projet a été développé comme une évaluation technique, démontrant la ca
 
 Il inclut :
 
-Frontend : Angular avec Material Design.
+Frontend : Angular avec Angular Material.
 
 Backend : NestJS.
 
