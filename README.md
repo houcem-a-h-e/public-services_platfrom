@@ -88,6 +88,8 @@ docker-compose up -d
 
 URL : http://localhost:8888.
 
+le login et mot passe : admin admin 
+
 Dans Keycloak, choisissez le realm public-services.
 
 Lancer le backend :
