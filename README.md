@@ -1,101 +1,109 @@
-# PublicServicesPlatform
+Plateforme Sécurisée de Gestion de Services Publics
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+Description du Projet
+Ce projet a été développé comme évaluation technique pour démontrer la capacité à construire une plateforme sécurisée de gestion de services publics. Il comprend un frontend basé sur Angular et un backend avec NestJS, orchestrés via un workspace Nx.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+Fonctionnalités Réalisées
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+Frontend Angular avec intégration Keycloak :
 
-## Run tasks
+Authentification des utilisateurs via Keycloak (login/logout).
 
-To run the dev server for your app, use:
+Gestion des rôles utilisateur : citoyen, agent, et admin.
 
-```sh
-npx nx serve public-services-platform
-```
+Protection des routes frontend en fonction des rôles (crétaion des services géré seulement par admin et agent).
 
-To create a production bundle:
+Les utilisateurs peuvent rechercher, consulter, modifier et supprimer des services selon leurs droits.
 
-```sh
-npx nx build public-services-platform
-```
+Backend NestJS :
 
-To see all available targets to run for a project, run:
+Création d’une API REST pour la gestion des services publics.
 
-```sh
-npx nx show project public-services-platform
-```
+Intégration partielle avec Keycloak. Les JWT sont émis correctement, mais leur validation et décodage dans le backend rencontrent des problèmes techniques.
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+Architecture Nx Workspace :
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Une structure modulaire favorisant la réutilisation du code (libs partagées).
 
-## Add new projects
+Intégration des scripts centralisés pour le build et le déploiement.
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+Docker et Keycloak :
 
-Use the plugin's generator to create new projects.
+Une image Docker personnalisée pour Keycloak, configurée avec les utilisateurs et les rôles de l'application.
 
-To generate a new application, use:
+Un fichier docker-compose.yml situé à la racine du projet pour un démarrage facile de Keycloak.
 
-```sh
-npx nx g @nx/angular:app demo
-```
+URL pour accéder à Keycloak : http://localhost:8888.
 
-To generate a new library, use:
+Comptes Utilisateurs de Test
 
-```sh
-npx nx g @nx/angular:lib mylib
-```
+Email	                                Mot de Passe	Rôle
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+houcem.eddinhe.aouissaoui@outlook.com	123456a	        admin
+a.houcem@outlook.com	                123456a	        agent
+houseem.aouiss.ci@gmail.com	            123456a	        citoyen
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Prérequis
 
-## Set up CI!
+Node.js : Version 22 ou supérieure.
 
-### Step 1
+Docker et Docker Compose installés.
 
-To connect to Nx Cloud, run the following command:
+Angular CLI pour lancer l'application frontend.
 
-```sh
-npx nx connect
-```
+Étapes d'Installation
 
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
+Cloner le projet :
 
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
 
-### Step 2
+git clone <URL_DU_REPO>
 
-Use the following command to configure a CI workflow for your workspace:
+cd <Dossier_Du_Projet>
 
-```sh
-npx nx g ci-workflow
-```
+Installer les dépendances :
 
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+npm install
 
-## Install Nx Console
+Démarrer Keycloak :
 
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
+docker-compose up -d
 
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Accéder à Keycloak : http://localhost:8888.
 
-## Useful links
+Les identifiants Keycloak (admin par défaut) sont définis dans le docker-compose.yml.
 
-Learn more:
+Choisir le realm "public-services" au niveau de l'interface de keycloak pour vérifier la configuration (par défaut "master")
 
-- [Learn more about this workspace setup](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+Lancer le backend :
 
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+nx serve backend
+
+Lancer le frontend :
+
+nx serve frontend
+
+Accéder à l'application :
+
+Frontend : http://localhost:4200
+
+Backend : http://localhost:3000/api
+
+Limitations
+L'intégration Keycloak côté backend n'est pas totalement fonctionnelle. Le décodage des JWT nécessite des ajustements techniques.
+
+MOSIP n’a pas été intégré dans ce projet.
+
+Pas de base de données : Les données sont fictives et stockées en mémoire.
+
+
+Fonctionnalités à Améliorer
+
+Résolution du problème de décodage des JWT dans NestJS.
+
+Intégration avec une base de données pour persister les données.
+
+Connexion au système MOSIP pour la gestion de l'identité numérique.
+
+
+Auteurs
+Houcem Eddine Aouissaoui

@@ -8,6 +8,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { PublicService } from '@public-services-platform/models';
 import { PublicServiceService } from '../../services/public-service.service';
+import { ServiceService } from '../../services/service.service';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-service-create',
@@ -30,14 +32,29 @@ export class ServiceCreateComponent {
     category: '',
     status: 'active'
   };
+ngOnInit() {
+  this.test()
+}
+  constructor(private serviceService: PublicServiceService,
+              private router: Router,
+              private apiService : ServiceService) {}
 
-  constructor(private serviceService: PublicServiceService, private router: Router) {}
+    test() {
+      console.log('Testing API Service');
+    this.apiService.test()
 
-  save() {
-    if (this.service.name && this.service.description && this.service.category) {
-      this.serviceService.addService(this.service as PublicService).subscribe(() => {
-        this.router.navigate(['/services']);
-      });
-    }
+  }
+
+
+  addService(){
+    this.apiService.create(this.service).pipe(
+          catchError(err => {
+            console.error('Error loading services', err);
+            return of(); 
+          })
+        ).subscribe(data => {
+          console.log('Service created successfully', data);
+            this.router.navigate(['/services']); // Navigate to the service list after creation
+        });  
   }
 }

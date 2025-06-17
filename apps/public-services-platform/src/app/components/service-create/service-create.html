@@ -1,6 +1,6 @@
 <h2 class="mat-headline">Create New Public Service</h2>
 
-<form class="service-form" (ngSubmit)="save()" #serviceForm="ngForm" novalidate>
+<form class="service-form" #serviceForm="ngForm" novalidate>
 
   <mat-form-field appearance="fill" class="full-width">
     <mat-label>Name</mat-label>
@@ -30,7 +30,7 @@
   </mat-form-field>
 
   <div class="button-row">
-    <button mat-raised-button color="primary" type="submit" [disabled]="serviceForm.invalid">
+    <button mat-raised-button color="primary" type="submit" (click)="addService()" [disabled]="serviceForm.invalid">
       Save
     </button>
   </div>

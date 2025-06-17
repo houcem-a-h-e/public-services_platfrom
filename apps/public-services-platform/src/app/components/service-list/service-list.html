@@ -1,8 +1,83 @@
 <h2>Public Services</h2>
-<mat-list>
-  <mat-list-item *ngFor="let service of services">
-    <h3 matLine>{{ service.name }}</h3>
-    <p matLine>{{ service.description }}</p>
-    <p matLine><small>Category: {{ service.category }} | Status: {{ service.status }}</small></p>
-  </mat-list-item>
-</mat-list>
+
+<!-- Search Bar -->
+<mat-form-field appearance="fill" class="search-bar">
+  <mat-label>Search Services</mat-label>
+  <input
+    matInput
+    [(ngModel)]="searchQuery"
+    (input)="filterServices()"
+    placeholder="Search by name, description, or category"
+  />
+</mat-form-field>
+
+<div class="table-container">
+  <mat-table [dataSource]="filteredServices" class="mat-elevation-z8">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let service">{{ service.name }}</mat-cell>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+      <mat-cell *matCellDef="let service">{{ service.description }}</mat-cell>
+    </ng-container>
+
+    <!-- Category Column -->
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
+      <mat-cell *matCellDef="let service">{{ service.category }}</mat-cell>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+      <mat-cell *matCellDef="let service">{{ service.status }}</mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
+      <mat-cell *matCellDef="let service">
+        <button mat-raised-button color="primary" (click)="editService(service)">Edit</button>
+        <button mat-raised-button color="warn" (click)="deleteService(service)">Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['name', 'description', 'category', 'status', 'actions']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['name', 'description', 'category', 'status', 'actions']"></mat-row>
+  </mat-table>
+</div>
+
+<!-- Edit Form -->
+<div *ngIf="editingService" class="edit-form">
+  <h3>Edit Service</h3>
+  <form>
+    <mat-form-field class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="editingService.name" name="name" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="editingService.description" name="description" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Category</mat-label>
+      <input matInput [(ngModel)]="editingService.category" name="category" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Status</mat-label>
+      <input matInput [(ngModel)]="editingService.status" name="status" />
+    </mat-form-field>
+
+    <div class="actions">
+      <button mat-raised-button color="accent" (click)="saveService()">Save</button>
+      <button mat-raised-button color="warn" (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+</div>

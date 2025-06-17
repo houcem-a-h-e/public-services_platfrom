@@ -16,7 +16,7 @@ export const createKeycloakAuthGuard = (requiredRoles: RoleType): CanActivateFn 
     console.log('All granted roles:', grantedRoles);
     console.log('Realm roles:', grantedRoles.realmRoles);
     console.log('Resource roles:', grantedRoles.resourceRoles);
-    console.log('Required roles:', requiredRoles);
+    console.log('Required roles jwt utilsZ:', requiredRoles);
     
     // Check if user is authenticated first
     if (!authenticated) {

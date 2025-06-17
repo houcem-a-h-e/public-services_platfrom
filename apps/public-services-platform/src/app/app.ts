@@ -10,7 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
     RouterLink,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule,],
+    MatIconModule,
+  ],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
 })
