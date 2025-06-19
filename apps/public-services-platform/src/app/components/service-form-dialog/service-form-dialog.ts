@@ -17,37 +17,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatButtonModule,
     MatCheckboxModule,
   ],
-  template: `
-    <h2 mat-dialog-title>{{ data?.service ? 'Edit Service' : 'Add Service' }}</h2>
-    <form [formGroup]="form" (ngSubmit)="save()">
-      <mat-dialog-content>
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-label>Service Name</mat-label>
-          <input matInput formControlName="name" required />
-          <mat-error *ngIf="form.controls['name'].hasError('required')">
-            Name is required
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-label>Description</mat-label>
-          <textarea matInput formControlName="description"></textarea>
-        </mat-form-field>
-
-        <mat-checkbox formControlName="active">Active</mat-checkbox>
-      </mat-dialog-content>
-
-      <mat-dialog-actions align="end">
-        <button mat-button type="button" (click)="cancel()">Cancel</button>
-        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
-          Save
-        </button>
-      </mat-dialog-actions>
-    </form>
-  `,
-  styles: [`
-    .full-width { width: 100%; }
-  `]
+  templateUrl: './service-form-dialog.html',
+  styleUrls: ['./service-form-dialog.scss'],
 })
 export class ServiceFormDialogComponent {
   form: FormGroup;

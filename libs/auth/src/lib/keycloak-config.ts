@@ -1,3 +1,5 @@
+import {keycloakUrl, keycloakRealm, keycloakClientId,
+   keycloakBackendClientId, keycloakBackendSecret} from './envVariables';
 export interface KeycloakConfig {
     url: string;
     realm: string;
@@ -10,16 +12,16 @@ export interface KeycloakConfig {
   }
   
   export const keycloakFrontendConfig: KeycloakConfig = {
-    url: 'http://localhost:8888',
-    realm: 'public-services',
-    clientId: 'public-services-frontend'
+    url: keycloakUrl,
+    realm: keycloakRealm,
+    clientId: keycloakClientId
   };
   
   export const keycloakBackendConfig: KeycloakConfig & { secret: string; public: boolean } = {
-    url: 'http://localhost:8888',
-    realm: 'public-services',
-    clientId: 'public-services-backend',
-    secret: 'kY6LKJtoNI0O8Shy0MCrcp0WVO5ldndW', // Replace with the client secret from Keycloak
+    url: keycloakUrl,
+    realm: keycloakRealm,
+    clientId: keycloakBackendClientId,
+    secret: keycloakBackendSecret, 
     public: false
   };
   

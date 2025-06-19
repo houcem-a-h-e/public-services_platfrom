@@ -6,3 +6,4 @@ export * from './lib/keycloak-backend-utils';
 export * from './lib/roles.guard';
 export * from './lib/decorators/public.decorator';
 export * from './lib/auth.service';
+export * from './lib/envVariables';
